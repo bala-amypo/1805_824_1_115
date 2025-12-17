@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 public class ShipmentRecord{
     private Long id;
-    private Long shipmentld
+    private Long shipmentld;
     private String sensorld;
     private LocalDateTime recordedAt;
     private Double temperatureValue;
