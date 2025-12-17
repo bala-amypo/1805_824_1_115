@@ -3,9 +3,10 @@ package com.example.demo.entity;
 public class ShipmentRecord{
     private Long id;
     private Long shipmentld
-    private String;
-    private String password;
-    private String role;
+    private String sensorld;
+    private LocalDateTime recordedAt;
+    private Double temperatureValue;
+    private Stirng location;
 
 
     public  Long getId(){
@@ -14,8 +15,8 @@ public class ShipmentRecord{
     public void setId(long id){
         this.id=id;
     }
-    public String getEmail(){
-        return email;
+    public Long getShipmentld(){
+        return shipmentld;
     }
     public void setEmail(String email){
         this.email=email;
