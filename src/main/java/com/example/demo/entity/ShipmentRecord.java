@@ -6,7 +6,7 @@ public class ShipmentRecord{
     private String sensorld;
     private String recordedAt;
     private Double temperatureValue;
-    private Stirng location;
+    private String location;
 
 
     
@@ -50,11 +50,11 @@ public class ShipmentRecord{
         this.temperatureValue = temperatureValue;
     }
 
-    public Stirng getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Stirng location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
