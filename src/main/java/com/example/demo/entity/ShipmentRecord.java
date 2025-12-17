@@ -4,7 +4,7 @@ public class ShipmentRecord{
     private Long id;
     private Long shipmentld;
     private String sensorld;
-    private LocalDateTime recordedAt;
+    private String recordedAt;
     private Double temperatureValue;
     private Stirng location;
 
@@ -34,11 +34,11 @@ public class ShipmentRecord{
         this.sensorld = sensorld;
     }
 
-    public LocalDateTime getRecordedAt() {
+    public String getRecordedAt() {
         return recordedAt;
     }
 
-    public void setRecordedAt(LocalDateTime recordedAt) {
+    public void setRecordedAt(String recordedAt) {
         this.recordedAt = recordedAt;
     }
 
