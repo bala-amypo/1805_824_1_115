@@ -9,21 +9,55 @@ public class ShipmentRecord{
     private Stirng location;
 
 
-    public  Long getId(){
+    
+    public Long getId() {
         return id;
     }
-    public void setId(long id){
-        this.id=id;
-    }
-    public Long getShipmentld(){
-        return shipmentld;
-    }
-    public void setEmail(String email){
-        this.email=email;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPassword(){
-        return password;
+    public Long getShipmentld() {
+        return shipmentld;
     }
-    public String get
+
+    public void setShipmentld(Long shipmentld) {
+        this.shipmentld = shipmentld;
+    }
+
+    public String getSensorld() {
+        return sensorld;
+    }
+
+    public void setSensorld(String sensorld) {
+        this.sensorld = sensorld;
+    }
+
+    public LocalDateTime getRecordedAt() {
+        return recordedAt;
+    }
+
+    public void setRecordedAt(LocalDateTime recordedAt) {
+        this.recordedAt = recordedAt;
+    }
+
+    public Double getTemperatureValue() {
+        return temperatureValue;
+    }
+
+    public void setTemperatureValue(Double temperatureValue) {
+        this.temperatureValue = temperatureValue;
+    }
+
+    public Stirng getLocation() {
+        return location;
+    }
+
+    public void setLocation(Stirng location) {
+        this.location = location;
+    }
+
+
+
 }
