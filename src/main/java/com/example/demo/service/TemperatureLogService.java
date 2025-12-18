@@ -4,8 +4,8 @@ import jakarta.persistence.Service;
 
 @Service
 public interface TemperatureLogService{
-    public TemperatureServiceLog recordLog(TemperatureSensorLog log);
-    public TemperatureServiceLog getLogsByShipment(Long shipmentld);
-    public TemperatureServiceLog getLogByld(Long id);
-    public TemperatureServiceLog getAllLogs();
+    public TemperatureSensorLog recordLog(TemperatureSensorLog log);
+    public TemperatureSensorLog getLogsByShipment(Long shipmentld);
+    public TemperatureSensorLog getLogByld(Long id);
+    public TemperatureSensoreLog getAllLogs();
 }
