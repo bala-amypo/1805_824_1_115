@@ -1,9 +1,16 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 
 
+@Entity
 public class ShipmentRecord{
+@Id
+@Gener
     private Long id;
     private Long shipmentld;
     private String sensorld;
