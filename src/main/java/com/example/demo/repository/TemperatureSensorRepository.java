@@ -3,6 +3,4 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.TemperatureSensor;
 
-public interface TemperatureSensorRepository extends JpaRepository<TemperatureSensor,Long>(){
-
-}
+public interface TemperatureSensorRepository extends JpaRepository<TemperatureSensor,Long>
