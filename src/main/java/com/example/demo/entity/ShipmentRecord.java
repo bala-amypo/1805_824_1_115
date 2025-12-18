@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 @Entity
 public class ShipmentRecord{
 @Id
-@Gener
+@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Long shipmentld;
     private String sensorld;
