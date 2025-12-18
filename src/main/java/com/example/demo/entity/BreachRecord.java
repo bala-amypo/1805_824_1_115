@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -28,6 +27,21 @@ public class BreachRecord {
     private String details;
     private LocalDateTime detectedAt;
     private Boolean resolved;
+
+    public BreachRecord(String breachType, Double breachValue, String details, LocalDateTime detectedAt, Long id, Long logId, Boolean resolved, String severity, Long shipmentId) {
+        this.breachType = breachType;
+        this.breachValue = breachValue;
+        this.details = details;
+        this.detectedAt = detectedAt;
+        this.id = id;
+        this.logId = logId;
+        this.resolved = resolved;
+        this.severity = severity;
+        this.shipmentId = shipmentId;
+    }
+
+    public BreachRecord() {
+    }
 
     @PrePersist
     public void prePersist() {
@@ -66,4 +80,5 @@ public class BreachRecord {
 
     public Boolean getResolved() { return resolved; }
     public void setResolved(Boolean resolved) { this.resolved = resolved; }
+    
 }

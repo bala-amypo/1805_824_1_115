@@ -1,4 +1,4 @@
-package com.example.collectiondp.entity;
+package com.example.demo.entity;
 
 import java.time.LocalDate;
 
@@ -18,6 +18,19 @@ public class TemperatureRule {
     private Boolean active;
     private LocalDate effectiveFrom;
     private LocalDate effectiveTo;
+
+    public TemperatureRule(Boolean active, LocalDate effectiveFrom, LocalDate effectiveTo, Long id, Double maxtTemp, Double minTemp, String productType) {
+        this.active = active;
+        this.effectiveFrom = effectiveFrom;
+        this.effectiveTo = effectiveTo;
+        this.id = id;
+        this.maxtTemp = maxtTemp;
+        this.minTemp = minTemp;
+        this.productType = productType;
+    }
+
+    public TemperatureRule() {
+    }
     public Long getId() {
         return id;
     }
