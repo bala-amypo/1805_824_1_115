@@ -3,4 +3,6 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.AlertRecord;
 
-public interface AlertRecordRepository extends JpaRepository<AlertRecord,Long>
+public interface AlertRecordRepository extends JpaRepository<AlertRecord,Long>{
+    
+}

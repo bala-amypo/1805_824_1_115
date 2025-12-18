@@ -3,4 +3,6 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.BreachRecord;
 
-public interface BreachRecordRepository extends JpaRepository<BreachRecord,Long>
+public interface BreachRecordRepository extends JpaRepository<BreachRecord,Long>{
+    
+}
