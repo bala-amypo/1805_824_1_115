@@ -15,10 +15,10 @@ public class TemperatureSensorLog{
     private Long id;
     private Long shipmentld;
     private String sensorld;
-    @coloumn(nullable=false)
+    @column(nullable=false)
     private LocalDateTime recordedAt;
     private Double temperatureValue;
-    @coloumn(nullable=true)
+    @column(nullable=true)
     private String location;
 
 
