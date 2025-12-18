@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+
+
+
 public class ShipmentRecord{
     private Long id;
     private Long shipmentld;
