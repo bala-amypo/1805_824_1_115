@@ -2,6 +2,7 @@ package com.example.demo.service;
 package com.example.demo.entity.ShipmentRecord;
 import jakarta.persistence.Service;
 
+@Service
 public interface ShipmentRecordService{
     public ShipmentRecord createShipment(ShipmentRecord shipment);
 
@@ -11,5 +12,5 @@ public interface ShipmentRecordService{
 
     public ShipmentRecord getShipmentById(Long id);
 
-    public ShipmentRecord 
+    public ShipmentRecord getAllShipments();
 }
