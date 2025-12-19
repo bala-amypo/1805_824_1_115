@@ -1,16 +1,16 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.Repository;
-import com.example.demo.entity.ShipmentRecord;
-import com.example.demo.service.ShipmentRecordService;
+import com.example.demo.repository.TemperatureSensorLogRepository;
+import com.example.demo.entity.TemperatureSensorLog;
+import com.example.demo.service.TemperatureLogService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class ShipmentRecordServiceImp implements ShipmentRecordService{
+public class TemperatureLogServiceImp implements TemperatureLogService{
 
     @Autowired
-    ShipmentRecordRepository smr;
-    public ShipmentRecord createShipmentRecord(ShipmentRecord record){
-        return smr.save(profile);
+    TemperatureSensorLogRepository tsl;
+    public TemperatureSensorLog createTemperatureSensorLog(TemperatureSenSorLog sensor){
+        return tsl.save(profile);
     }
 }
