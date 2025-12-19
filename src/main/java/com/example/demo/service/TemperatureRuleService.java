@@ -5,5 +5,8 @@ import jakarta.persistence.Service;
 @Service
 public interface TemperatureRule{
     public TemperatureRule createRule(TemperatureRule rule)
-    public TemperatureRule update()
+    public TemperatureRule updateRule(Long id,TemperatureRule rule)
+    public TemperatureRule getActiveRules()
+    public TemperatureRule getRuleForProduct(String productType,LocalDate date)
+    public TemperatureRule grtAllRules()
 }
