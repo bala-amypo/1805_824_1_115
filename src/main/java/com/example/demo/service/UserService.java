@@ -4,8 +4,7 @@ import jakarta.pesistence.Service;
 
 @Service
 public interface UserService{
-   public User registerUser(User user);
-   
+   public User registerUser(User user);       
    public User findByEmail(String email);
 
 
