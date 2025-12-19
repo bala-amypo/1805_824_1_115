@@ -10,7 +10,7 @@ public class BreachDetectionServiceImp implements BreachDetectionService{
 
     @Autowired
     BreachDetectionRepository bdr;
-    public BreachDetection createBreachDetection(BreachDetection de){
-        return smr.save(profile);
+    public BreachDetection createBreachDetection(BreachDetection detection){
+        return bdr.save(detection);
     }
 }
