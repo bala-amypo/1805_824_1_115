@@ -1,5 +1,5 @@
 package com.example.demo.service;
-package com.example.demo.entity.ShipmentRecord;
+import com.example.demo.entity.ShipmentRecord;
 import jakarta.persistence.Service;
 
 @Service
