@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TemperatureRuleServiceImp implements TemperatureRuleService{
 
     @Autowired
-    TemperatureRule  Repository smr;
-    public ShipmentRecord createShipmentRecord(ShipmentRecord record){
-        return smr.save(profile);
+    TemperatureRuleRepository trr;
+    public TemperatureRule createTemperatureRule(TemperatureRule rule){
+        return trr.save(rule);
     }
 }
