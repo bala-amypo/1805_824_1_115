@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class ShipmentRecordServiceImp implements ShipmentRecordService{
+public class BreachDetectionServiceImp implements BreachDetectionService{
 
     @Autowired
-    ShipmentRecordRepository smr;
-    public ShipmentRecord createShipmentRecord(ShipmentRecord record){
+    BreachDetectionRepository bdr;
+    public BreachDetection createBreachDetection(BreachDetection de){
         return smr.save(profile);
     }
 }
