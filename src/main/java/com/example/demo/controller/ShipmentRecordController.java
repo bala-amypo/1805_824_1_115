@@ -15,9 +15,9 @@ public class UserController{
     @Autowired
     UserService crs;
     @PostMapping("/rules")
-    public User rules(@RequestBody User rule)
+    public User rules(@RequestBody ShipmentRecord record)
     {
-        return crs.(rule);
+        return crs.ShipmentRecord(record);
     }
     @GetMapping
     public List<User> getrules()
