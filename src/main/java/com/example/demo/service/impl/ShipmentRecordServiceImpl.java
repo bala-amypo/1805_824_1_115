@@ -8,5 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class ShipmentRecordServiceImp implements ShipmentRecordService{
 
-    @Auto
+    @Autowired
+    ShipmentRecordRepository smr;
+    public ShipmentRecord createShipmentRecord(ShipmentRecord record){
+        return smr.save(profile);
+    }
 }
