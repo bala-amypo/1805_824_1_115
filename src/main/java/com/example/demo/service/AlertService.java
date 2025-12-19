@@ -4,8 +4,8 @@ import jakarta.persistence.Service;
 
 @Service
 public interface AlertService{
- public AlertRecord triggerAlert(AlertRecord alert)
- public AlertRecord acknowledgeAlert(Long id)
- public AlertRecord getAlertsByShipment(Long shipment)
- public AlertRecord getAllAlerts()   
+ public AlertRecord triggerAlert(AlertRecord alert);
+ public AlertRecord acknowledgeAlert(Long id);
+ public AlertRecord getAlertsByShipment(Long shipment);
+ public AlertRecord getAllAlerts();
 }
