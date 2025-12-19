@@ -11,6 +11,6 @@ public class TemperatureLogServiceImp implements TemperatureLogService{
     @Autowired
     TemperatureSensorLogRepository tsl;
     public TemperatureSensorLog createTemperatureSensorLog(TemperatureSenSorLog sensor){
-        return tsl.save();
+        return tsl.save(sensor);
     }
 }
