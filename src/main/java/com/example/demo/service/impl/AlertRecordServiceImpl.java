@@ -10,8 +10,9 @@ public class AlertRecordServiceImpl implements AlertRecordService{
 
     @Autowired
     AlertRecordRepository arr;
-    public ShipmentRecord createAlertRecord(AlertRecord alert){
+    public triggerAlert(AlertRecord alert){
         return arr.save(alert);
     }
-    
+    public List<AlertRecord> getAlertsByShipment()
+
 }
