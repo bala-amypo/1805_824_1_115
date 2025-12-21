@@ -4,6 +4,7 @@ import com.example.demo.entity.AlertRecord;
 import com.example.demo.service.AlertRecordService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.list;
 
 @Service
 public class AlertRecordServiceImpl implements AlertRecordService{
