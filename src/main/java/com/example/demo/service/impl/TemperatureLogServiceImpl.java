@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class TemperatureLogServiceImp implements TemperatureLogService{
+public class TemperatureLogServiceImpl implements TemperatureLogService{
 
     @Autowired
     TemperatureSensorLogRepository tsl;

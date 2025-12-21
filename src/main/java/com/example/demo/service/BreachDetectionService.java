@@ -3,7 +3,7 @@ import com.example.demo.entity.BreachRecord;
 import jakarta.persistence.Service;
 
  
-public interface BreachDetection{
+public interface BreachDetectionService{
     public BreachRecord logBreach(BreachRecord breach);
     public BreachRecord getBreachesByShipment(Long shipmentld);
     public BreachRecord resolveBreach(Long id);

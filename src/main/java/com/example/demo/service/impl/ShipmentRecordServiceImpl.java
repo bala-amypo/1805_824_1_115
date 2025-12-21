@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class ShipmentRecordServiceImp implements ShipmentRecordService{
+public class ShipmentRecordServiceImpl implements ShipmentRecordService{
 
     @Autowired
     ShipmentRecordRepository smr;

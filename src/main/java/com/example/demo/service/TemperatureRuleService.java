@@ -2,7 +2,7 @@ package com.example.demo.service;
 import com.example.demo.entity.TemperatureRule;
 import jakarta.persistence.Service;
 
-public interface TemperatureRule{
+public interface TemperatureRuleService{
     public TemperatureRule createRule(TemperatureRule rule);
     public TemperatureRule updateRule(Long id,TemperatureRule rule);
     public TemperatureRule getActiveRules();
