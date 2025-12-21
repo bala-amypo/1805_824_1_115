@@ -1,7 +1,9 @@
-package com.example.demo.controller;
+ package com.example.demo.controller;
+
 import java.util.List;
-import com.example.demo.service.AlertService;
+
 import com.example.demo.entity.AlertRecord;
+import com.example.demo.service.AlertService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,15 +13,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class AlertController {
+
     @Autowired
-    AlertService as;
-    @PostMapping("/addcategory")
-    public  AlertRecord create(@RequestBody Category cat){
-        return as.addCategory(cat);
+    private AlertService as;
+
+  
+    @PostMapping("/addalert")
+    public AlertRecord createAlert(@RequestBody AlertRecord alert) {
+        return as.triggerAlert(alert);
     }
-    @GetMapping("/getall")
-    public List<Category> listall(){
-        return as.getAllCategory();
+
+    @GetMapping("/getallalerts")
+    public List<AlertRecord> getAllAlerts() {
+        return as.getAllAlerts();
     }
+
     
+    @GetMapping("/alerts/{shipmentId}")
+    public List<AlertRecord> getAlertsByShipment(@PathVariable Long shipmentId) {
+        return as.getAlertsByShipment(shipmentId);
+    }
 }
