@@ -15,20 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class TemperatureLogController {
-
     @Autowired
     private TemperatureLogService tm;
-
     @PostMapping("/log")
     public TemperatureSensorLog create(@RequestBody TemperatureSensorLog log) {
         return tm.recordLog(log);
     }
-
     @GetMapping("/addtemp")
     public List<TemperatureSensorLog> listtemp() {
         return tm.getAllLogs();
     }
-
     @GetMapping("/getid/{id}")
     public Optional<TemperatureSensorLog> getbyid(@PathVariable Long id) {
         return tm.getLogById(id);
