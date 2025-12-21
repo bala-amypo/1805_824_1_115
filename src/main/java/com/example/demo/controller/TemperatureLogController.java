@@ -31,8 +31,8 @@ public class TemperatureLogController{
                 return as.getLogById(id);
             }
 
-            @GetMapping("/getshipmentid")
-            public optional
+            @GetMapping("/getshipmentid/{shipmentid}")
+            public Optional<TemperatureSensorLog> 
         
     
 
