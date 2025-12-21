@@ -27,7 +27,7 @@ public class TemperatureLogController{
         }
         @GetMapping("/getid"){
             public TemperatureSensorLog create(@RequestBody Log by){
-                return
+                return as.getallId()
             }
         }
     }
