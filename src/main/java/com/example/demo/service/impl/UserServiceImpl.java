@@ -10,7 +10,7 @@ public class UserServiceImp implements UserService{
 
     @Autowired
     UserRepository usr;
-    public ShipmentRecord createUser(ShipmentRecord record){
-        return smr.save(record);
+    public ShipmentRecord createUser(User use){
+        return usr.save(use);
     }
 }
