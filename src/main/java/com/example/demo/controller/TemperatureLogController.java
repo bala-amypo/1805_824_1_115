@@ -14,11 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TemperatureLogController{
     
     @Autowired
-    private  
+    private TemperatureLogService tm;
 
     @PostMapping("/log")
     public TemperatureSensorLog create(@RequestBody TemperatureSensorLog log){
         return as.recordLog(sensor)
     }
-    
+
+    @GetMapping(addship)
+
 }
