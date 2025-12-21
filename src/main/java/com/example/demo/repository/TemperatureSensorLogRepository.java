@@ -5,6 +5,6 @@ import com.example.demo.entity.TemperatureSensorLog;
 import java.util.List;
 
 public interface TemperatureSensorLogRepository extends JpaRepository<TemperatureSensorLog,Long>{
-    List<TemperatureSensorLog> findByshipmentId(shipmentId);
+    List<TemperatureSensorLog> findByshipmentId(shipmentId Long);
 
 }
