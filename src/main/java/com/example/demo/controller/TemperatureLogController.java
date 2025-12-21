@@ -17,5 +17,7 @@ public class TemperatureLogController{
     private  
 
     @PostMapping("/log")
-    public 
+    public TemperatureSensorLog create(@RequestBody TemperatureSensorLog log){
+        return as.
+    }
 }
