@@ -18,7 +18,7 @@ public class TemperatureLogServiceImpl implements TemperatureLogService{
         return tsl.findByShipmentId(shipmentId);
     }
     public TemperatureSensorLog getLogById(Long id){
-        return.tsl findById(id);
+        return tsl.findById(id);
     }
     public List<TemperatureSensorLog> getAllRules(){
         return.tsl.findAll();
