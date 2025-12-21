@@ -13,4 +13,5 @@ public class AlertRecordServiceImpl implements AlertRecordService{
     public ShipmentRecord createAlertRecord(AlertRecord alert){
         return arr.save(alert);
     }
+    
 }
