@@ -20,6 +20,7 @@ public class AlertController {
     public AlertRecord create(@RequestBody AlertRecord alert) {
         return as.triggerAlert(alert);
     }
+    @
  
     @GetMapping("/getallalerts")
     public List<AlertRecord> listall() {

@@ -14,7 +14,9 @@ public class AlertRecordServiceImpl implements AlertService{
     public AlertRecord triggerAlert(AlertRecord alert){
         return arr.save(alert);
     }
-    public List<AlertRecord>
+    public List<AlertRecord>acknowledgeAlert(Long id){
+        return.arr.save(id);
+    }
     public List<AlertRecord> getAlert(Long shipmentId){
         return arr.findByShipmentId(shipmentId);
     }
