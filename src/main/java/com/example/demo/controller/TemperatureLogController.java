@@ -32,7 +32,9 @@ public class TemperatureLogController{
             }
 
             @GetMapping("/getshipmentid/{shipmentid}")
-            public Optional<TemperatureSensorLog> 
+            public Optional<TemperatureSensorLog> getshipid(@pathVariables Long shipmentId){
+                return as.getLogsByShipment(shipmentId);
+            }
         
     
 
