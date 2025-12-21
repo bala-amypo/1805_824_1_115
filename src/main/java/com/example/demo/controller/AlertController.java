@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 import java.util.List;
-import com.example.demo.service.CategoryService;
-import com.example.demo.model.Category;
+import com.example.demo.service.AlertService;
+import com.example.demo.entity.AlertRecord;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-public class CategoryController {
+public class AlertController {
     @Autowired
-    CategoryService cs;
+    AlertService as;
     @PostMapping("/addcategory")
-    public  Category create(@RequestBody Category cat){
-        return cs.addCategory(cat);
+    public  AlertRecord create(@RequestBody Category cat){
+        return as.addCategory(cat);
     }
     @GetMapping("/getall")
     public List<Category> listall(){
-        return cs.getAllCategory();
+        return as.getAllCategory();
     }
     
 }
