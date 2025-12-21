@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class UserServiceImp implements ShipmentRecordService{
+public class UserServiceImp implements UserService{
 
     @Autowired
-    ShipmentRecordRepository smr;
-    public ShipmentRecord createShipmentRecord(ShipmentRecord record){
+    UserRepository usr;
+    public ShipmentRecord createUser(ShipmentRecord record){
         return smr.save(record);
     }
 }
