@@ -21,8 +21,11 @@ public class TemperatureLogController{
         return as.recordLog(sensor)
     }
 
-    @GetMapping("/addship"){
-        public List<TemperatureSensorLog>listall()
+    @GetMapping("/"){
+        public List<TemperatureSensorLog> listtemp(){
+            return as.getAllTemp();
+        }
+        @GetMapping()
     }
 
 }
