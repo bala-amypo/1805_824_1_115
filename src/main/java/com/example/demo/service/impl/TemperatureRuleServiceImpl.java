@@ -18,7 +18,7 @@ public class TemperatureRuleServiceImpl implements TemperatureRuleService {
 
     @Override
     public TemperatureRule createRule(TemperatureRule rule) {
-        if (rule.getMinTemp() >= rule.getMaxTemp()) {
+        if (rule.getMinTemp() >= rule.getMaxtTemp()) {
             throw new RuntimeException("Min temperature must be less than max temperature");
         }
         return ruleRepo.save(rule);
@@ -29,13 +29,13 @@ public class TemperatureRuleServiceImpl implements TemperatureRuleService {
         TemperatureRule existing = ruleRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Rule not found"));
 
-        if (rule.getMinTemp() >= rule.getMaxTemp()) {
+        if (rule.getMinTemp() >= rule.getMaxtTemp()) {
             throw new RuntimeException("Min temperature must be less than max temperature");
         }
 
         existing.setProductType(rule.getProductType());
         existing.setMinTemp(rule.getMinTemp());
-        existing.setMaxTemp(rule.getMaxTemp());
+        existing.setMaxtTemp(rule.getMaxtTemp());
         existing.setActive(rule.getActive());
         existing.setEffectiveFrom(rule.getEffectiveFrom());
         existing.setEffectiveTo(rule.getEffectiveTo());
@@ -57,7 +57,7 @@ public class TemperatureRuleServiceImpl implements TemperatureRuleService {
         return ruleRepo
                 .findFirstByProductTypeAndActiveTrueAndEffectiveFromLessThanEqualAndEffectiveToGreaterThanEqual(
                         productType, date, date)
-                .orElseThrow(() -> new RuntimeException("No active rule found for product"));
+                .orElseThrow(() -> new RuntimeException("No active rule found"));
     }
 
     @Override
