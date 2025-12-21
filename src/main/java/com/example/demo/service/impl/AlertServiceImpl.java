@@ -1,16 +1,19 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.entity.User;
-import com.example.demo.service.UserService;
-import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.AlertRecord;
+import com.example.demo.repository.AlertRecordRepository;
+import com.example.demo.service.AlertRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
-public class AlertRecordServiceImpl implements AlertRecordService{
+public class AlertRecordServiceImpl implements AlertRecordService {
 
     @Autowired
-    AlertRecordRepository arr;
-    public ShipmentRecord createAlertRecord(AlertRecord alert){
-        return arr.save(alert);
+    private AlertRecordRepository alertRecordRepository;
+
+    @Override
+    public AlertRecord createAlertRecord(AlertRecord alert) {
+        return alertRecordRepository.save(alert);
     }
 }
