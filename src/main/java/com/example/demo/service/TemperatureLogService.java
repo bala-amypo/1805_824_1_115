@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.entity.TemperatureSensorLog;
 import java.util.List;
-import java.util.Optional;
 
 public interface TemperatureLogService {
     TemperatureSensorLog recordLog(TemperatureSensorLog log);
