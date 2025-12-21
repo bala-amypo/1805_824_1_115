@@ -1,4 +1,3 @@
-package com.example.demo.entity;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +20,19 @@ public class AlertRecord {
     private String message;
     private LocalDateTime sentAt;
     private Boolean acknowledged;
+
+    public AlertRecord(Boolean acknowledged, String alertType, Long breachId, Long id, String message, LocalDateTime sentAt, Long shipmentId) {
+        this.acknowledged = acknowledged;
+        this.alertType = alertType;
+        this.breachId = breachId;
+        this.id = id;
+        this.message = message;
+        this.sentAt = sentAt;
+        this.shipmentId = shipmentId;
+    }
+
+    public AlertRecord() {
+    }
 
     @PrePersist
     public void prePersist() {
