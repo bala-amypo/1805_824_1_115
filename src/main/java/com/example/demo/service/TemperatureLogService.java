@@ -6,7 +6,8 @@ import java.util.Optional;
 
 public interface TemperatureLogService {
     TemperatureSensorLog recordLog(TemperatureSensorLog log);
-    List<TemperatureSensorLog> getLogsByShipment(Long shipmentId);
-    Optional<TemperatureSensorLog> getLogById(Long id);
     List<TemperatureSensorLog> getAllLogs();
+    Optional<TemperatureSensorLog> getLogById(Long id);
+    Optional<TemperatureSensorLog> getLogsByShipment(Long shipment);
+   
 }
