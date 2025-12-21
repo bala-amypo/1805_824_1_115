@@ -23,7 +23,7 @@ public class TemperatureLogController{
 
     @GetMapping("/addtemp")
         public List<TemperatureSensorLog> listtemp(){
-            return as.getLogsByShipment();
+            return as.getAllLogs();
         }
     
         @GetMapping("/getid")
