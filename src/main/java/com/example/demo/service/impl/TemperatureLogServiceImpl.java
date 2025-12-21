@@ -14,5 +14,8 @@ public class TemperatureLogServiceImpl implements TemperatureLogService{
     public TemperatureSensorLog recordLog(TemperatureSenSorLog sensor){
         return tsl.save(sensor);
     }
-    public List<TemperatureSensorLog> getLogsByShipment()
+    public List<TemperatureSensorLog> getLogsByShipment(Long shipmentld){
+        return tsl.findByShipmentId(shipmentId);
+    }
+    public TemperatureS
 }
