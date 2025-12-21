@@ -1,26 +1,38 @@
-package com.example.demo.service.impl;
-import com.example.demo.repository.TemperatureSensorLogRepository;
+package com.example.demo.controller;
+
+import java.util.List;
+import java.util.Optional;
+
 import com.example.demo.entity.TemperatureSensorLog;
 import com.example.demo.service.TemperatureLogService;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.List;
 
-@Service
-public class TemperatureLogServiceImpl implements TemperatureLogService{
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@RestController
+@RequestMapping("/temperature")
+public class TemperatureLogController {
 
     @Autowired
-    TemperatureSensorLogRepository tsl;
-    public TemperatureSensorLog recordLog(TemperatureSenSorLog sensor){
-        return tsl.save(sensor);
+    private TemperatureLogService tm;
+
+    @PostMapping("/log")
+    public TemperatureSensorLog create(@RequestBody TemperatureSensorLog log) {
+        return tm.recordLog(log);
     }
-    public TemperatureSensorLog getLogsByShipment(Long shipmentld){
-        return tsl.findById(Long shipmentId);
+
+    @GetMapping("/all")
+    public List<TemperatureSensorLog> listtemp() {
+        return tm.getAllLogs();
     }
-    public TemperatureSensorLog getLogById(Long id){
-        return tsl.findById(id);
+
+    @GetMapping("/getid/{id}")
+    public Optional<TemperatureSensorLog> getbyid(@PathVariable Long id) {
+        return tm.getLogById(id);
     }
-    public List<TemperatureSensorLog> getAllRules(){
-        return.tsl.findAll();
+
+    @GetMapping("/shipment/{shipmentId}")
+    public List<TemperatureSensorLog> getshipid(@PathVariable Long shipmentId) {
+        return tm.getLogsByShipment(shipmentId);
     }
 }
