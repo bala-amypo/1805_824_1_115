@@ -1,16 +1,47 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.BreachDetectionRepository;
-import com.example.demo.entity.BreachDetection;
-import com.example.demo.service.BreachDectionService;
+
+import com.example.demo.entity.BreachRecord;
+import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.BreachRecordRepository;
+import com.example.demo.service.BreachDetectionService;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class BreachDetectionServiceImpl implements BreachDetectionService{
+public class BreachDetectionServiceImpl implements BreachDetectionService {
 
-    @Autowired
-    BreachDetectionRepository bdr;
-    public BreachDetection createBreachDetection(BreachDetection detection){
-        return bdr.save(detection);
+    private final BreachRecordRepository breachRecordRepository;
+
+    public BreachDetectionServiceImpl(BreachRecordRepository breachRecordRepository) {
+        this.breachRecordRepository = breachRecordRepository;
+    }
+
+    @Override
+    public BreachRecord logBreach(BreachRecord breach) {
+        return breachRecordRepository.save(breach);
+    }
+
+    @Override
+    public BreachRecord resolveBreach(Long id) {
+        BreachRecord breach = breachRecordRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Breach not found"));
+        breach.setResolved(true);
+        return breachRecordRepository.save(breach);
+    }
+
+    @Override
+    public List<BreachRecord> getBreachesByShipment(Long shipmentId) {
+        return breachRecordRepository.findByShipmentId(shipmentId);
+    }
+
+    @Override
+    public Optional<BreachRecord> getBreachById(Long id) {
+        return breachRecordRepository.findById(id);
+    }
+
+    @Override
+    public List<BreachRecord> getAllBreaches() {
+        return breachRecordRepository.findAll();
     }
 }

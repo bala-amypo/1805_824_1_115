@@ -1,16 +1,38 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.TemperatureSensorLogRepository;
+
 import com.example.demo.entity.TemperatureSensorLog;
+import com.example.demo.repository.TemperatureSensorLogRepository;
 import com.example.demo.service.TemperatureLogService;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TemperatureLogServiceImpl implements TemperatureLogService{
+public class TemperatureLogServiceImpl implements TemperatureLogService {
 
-    @Autowired
-    TemperatureSensorLogRepository tsl;
-    public TemperatureSensorLog createTemperatureSensorLog(TemperatureSenSorLog sensor){
-        return tsl.save(sensor);
+    private final TemperatureSensorLogRepository temperatureSensorLogRepository;
+
+    public TemperatureLogServiceImpl(TemperatureSensorLogRepository temperatureSensorLogRepository) {
+        this.temperatureSensorLogRepository = temperatureSensorLogRepository;
+    }
+
+    @Override
+    public TemperatureSensorLog recordLog(TemperatureSensorLog log) {
+        return temperatureSensorLogRepository.save(log);
+    }
+
+    @Override
+    public List<TemperatureSensorLog> getLogsByShipment(Long shipmentId) {
+        return temperatureSensorLogRepository.findByShipmentId(shipmentId);
+    }
+
+    @Override
+    public Optional<TemperatureSensorLog> getLogById(Long id) {
+        return temperatureSensorLogRepository.findById(id);
+    }
+
+    @Override
+    public List<TemperatureSensorLog> getAllLogs() {
+        return temperatureSensorLogRepository.findAll();
     }
 }

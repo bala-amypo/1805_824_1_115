@@ -2,18 +2,31 @@ package com.example.demo.service.impl;
 
 import com.example.demo.entity.AlertRecord;
 import com.example.demo.repository.AlertRecordRepository;
-import com.example.demo.service.AlertRecordService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.AlertService;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
-public class AlertRecordServiceImpl implements AlertRecordService {
+public class AlertServiceImpl implements AlertService {
 
-    @Autowired
-    private AlertRecordRepository alertRecordRepository;
+    private final AlertRecordRepository alertRecordRepository;
+
+    public AlertServiceImpl(AlertRecordRepository alertRecordRepository) {
+        this.alertRecordRepository = alertRecordRepository;
+    }
 
     @Override
-    public AlertRecord createAlertRecord(AlertRecord alert) {
+    public AlertRecord triggerAlert(AlertRecord alert) {
         return alertRecordRepository.save(alert);
+    }
+
+    @Override
+    public List<AlertRecord> getAlertsByShipment(Long shipmentId) {
+        return alertRecordRepository.findByShipmentId(shipmentId);
+    }
+
+    @Override
+    public List<AlertRecord> getAllAlerts() {
+        return alertRecordRepository.findAll();
     }
 }
