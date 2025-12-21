@@ -13,16 +13,11 @@ import java.util.List;
 @RestController
 public class ShipmentRecordController{
     @Autowired
-    ShipmentRecordService sms;
-    @PostMapping("/rules")
-    public User rules(@RequestBody ShipmentRecord record)
-    {
-        return sms.ShipmentRecord(record);
-    }
-    @GetMapping
-    public List<User> getrules()
-    {
-        return crs.getAllRules();
-    }
-
-}
+        ShipmentRecordService sms;
+            @PostMapping("/rules")
+                public User rules(@RequestBody ShipmentRecord record)
+                    {
+                            return sms.ShipmentRecord(record);
+                                }
+                                    @GetMapping
+                                        public List<User> getrules()
