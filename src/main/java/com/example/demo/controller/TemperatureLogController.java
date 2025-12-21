@@ -21,11 +21,15 @@ public class TemperatureLogController{
         return as.recordLog(sensor)
     }
 
-    @GetMapping("/"){
+    @GetMapping("/addtemp"){
         public List<TemperatureSensorLog> listtemp(){
             return as.getAllTemp();
         }
-        @GetMapping()
+        @GetMapping("/getid"){
+            public TemperatureSensorLog create(@RequestBody Log by){
+                return
+            }
+        }
     }
 
 }
