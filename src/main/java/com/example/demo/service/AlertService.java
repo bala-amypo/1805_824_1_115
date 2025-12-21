@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AlertService {
     AlertRecord triggerAlert(AlertRecord alert);
+    List<AlterRecord> acknowledgeAlert(Long shipment);
     List<AlertRecord> getAlert(Long shipmentId);
     List<AlertRecord> getAllAlerts();
 }
