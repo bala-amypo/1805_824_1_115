@@ -14,5 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TemperatureLogController{
     
     @Autowired
-    private 
+    private  
+
+    @PostMapping("/log")
+    public 
 }
