@@ -22,7 +22,7 @@ public class AlertController {
         return as.triggerAlert(alert);
     }
     @PutMapping("/getid")
-    public AlertRecord create@RequestBody 
+    public AlertRecord create(@RequestBody ) 
  
     @GetMapping("/getallalerts")
     public List<AlertRecord> listall() {
