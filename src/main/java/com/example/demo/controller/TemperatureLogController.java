@@ -11,4 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-public class TemperatureLog
+public class TemperatureLogController{
+    
+    @Autowired
+    private 
+}
