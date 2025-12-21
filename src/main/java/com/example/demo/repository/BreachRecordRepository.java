@@ -4,5 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.BreachRecord;
 
 public interface BreachRecordRepository extends JpaRepository<BreachRecord,Long>{
+    List<BreachRecord> findByShipmentId(Long shipmentId);
+
     
 }
