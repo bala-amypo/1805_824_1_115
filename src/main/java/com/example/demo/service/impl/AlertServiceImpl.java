@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class AlertRecordServiceImpl implements AlertRecordService{
 
     @Autowired
-    UserRepository usr;
-    public ShipmentRecord createUser(User use){
-        return usr.save(use);
+    AlertRecordRepository arr;
+    public ShipmentRecord createAlertRecord(AlertRecord alert){
+        return arr.save(alert);
     }
 }
