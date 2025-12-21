@@ -8,6 +8,6 @@ public interface BreachDetectionService {
     BreachRecord logBreach(BreachRecord breach);
     BreachRecord resolveBreach(Long id);
     List<BreachRecord> getBreachesByShipment(Long shipmentId);
-    Optional<BreachRecord> getBreachById(Long id);
+    BreachRecord getBreachById(Long id);
     List<BreachRecord> getAllBreaches();
 }
