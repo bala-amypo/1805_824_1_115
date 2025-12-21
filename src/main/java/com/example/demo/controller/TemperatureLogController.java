@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class TemperatureLogController {
     @Autowired
-    private TemperatureLogService tm;
+     TemperatureLogService tm;
     @PostMapping("/log")
     public TemperatureSensorLog create(@RequestBody TemperatureSensorLog log) {
         return tm.recordLog(log);
