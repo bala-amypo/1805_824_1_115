@@ -1,10 +1,12 @@
 package com.example.demo.service;
-import com.example.demo.entity.TemperatureSensorLog;
-import jakarta.persistence.Service;
 
-public interface TemperatureLogService{
-    public TemperatureSensorLog recordLog(TemperatureSensorLog log);
-    public TemperatureSensorLog getLogsByShipment(Long shipmentld);
-    public TemperatureSensorLog getLogByld(Long id);
-    public TemperatureSensoreLog getAllLogs();
+import com.example.demo.entity.TemperatureSensorLog;
+import java.util.List;
+import java.util.Optional;
+
+public interface TemperatureLogService {
+    TemperatureSensorLog recordLog(TemperatureSensorLog log);
+    List<TemperatureSensorLog> getLogsByShipment(Long shipmentId);
+    Optional<TemperatureSensorLog> getLogById(Long id);
+    List<TemperatureSensorLog> getAllLogs();
 }
