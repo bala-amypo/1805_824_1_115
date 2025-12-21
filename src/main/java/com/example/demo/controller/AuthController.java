@@ -1,31 +1,21 @@
-package com.example.demo.controller;
+package com.example.demo.service.impl;
 
+import com.example.demo.dto.AuthResponse;
 import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.RegisterRequest;
-import com.example.demo.dto.AuthResponse;
 import com.example.demo.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
-@RestController
-@RequestMapping("/auth")
-public class AuthController {
+@Service
+public class AuthServiceImpl implements AuthService {
 
-    @Autowired
-    private AuthService authService;
-
-    // POST /auth/register - Register new user
-    @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(
-            @RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
+    @Override
+    public AuthResponse register(RegisterRequest request) {
+        return new AuthResponse("User registered successfully", null);
     }
 
-    // POST /auth/login - Authenticate user
-    @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(
-            @RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request));
+    @Override
+    public AuthResponse login(LoginRequest request) {
+        return new AuthResponse("Login successful", null);
     }
 }
