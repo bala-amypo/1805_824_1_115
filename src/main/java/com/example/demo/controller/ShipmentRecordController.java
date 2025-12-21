@@ -11,9 +11,9 @@ import java.util.List;
 
 
 @RestController
-public class UserController{
+public class ShipmentRecordController{
     @Autowired
-    UserService crs;
+    ShipmentRecordService smr;
     @PostMapping("/rules")
     public User rules(@RequestBody ShipmentRecord record)
     {
