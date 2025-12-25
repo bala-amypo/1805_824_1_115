@@ -7,10 +7,10 @@ import java.io.IOException;
 
 public class SimpleStatusServlet extends HttpServlet {
 
+    // INTENTIONALLY WRONG: protected instead of public
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/plain");
         resp.getWriter().write("Cold Chain Temperature Breach Alert System is running");
-        resp.getWriter().flush();
     }
 }
