@@ -10,70 +10,28 @@ public class AlertRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long shipmentId;
     private Long breachId;
-    private String alertType;
-    private String message;
-    private LocalDateTime sentAt;
+    private Long shipmentId;
     private Boolean acknowledged;
+    private LocalDateTime sentAt;
 
     @PrePersist
     public void prePersist() {
-        this.sentAt = LocalDateTime.now();
-        this.acknowledged = false;
+        if (acknowledged == null) acknowledged = false;
+        if (sentAt == null) sentAt = LocalDateTime.now();
     }
 
-    // ---------- Getters & Setters ----------
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getBreachId() { return breachId; }
+    public void setBreachId(Long breachId) { this.breachId = breachId; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getShipmentId() { return shipmentId; }
+    public void setShipmentId(Long shipmentId) { this.shipmentId = shipmentId; }
 
-    public Long getShipmentId() {
-        return shipmentId;
-    }
+    public Boolean getAcknowledged() { return acknowledged; }
+    public void setAcknowledged(Boolean acknowledged) { this.acknowledged = acknowledged; }
 
-    public void setShipmentId(Long shipmentId) {
-        this.shipmentId = shipmentId;
-    }
-
-    public Long getBreachId() {
-        return breachId;
-    }
-
-    public void setBreachId(Long breachId) {
-        this.breachId = breachId;
-    }
-
-    public String getAlertType() {
-        return alertType;
-    }
-
-    public void setAlertType(String alertType) {
-        this.alertType = alertType;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public LocalDateTime getSentAt() {
-        return sentAt;
-    }
-
-    public Boolean getAcknowledged() {
-        return acknowledged;
-    }
-
-    public void setAcknowledged(Boolean acknowledged) {
-        this.acknowledged = acknowledged;
-    }
+    public LocalDateTime getSentAt() { return sentAt; }
 }

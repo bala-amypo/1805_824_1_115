@@ -14,65 +14,29 @@ public class TemperatureRule {
     private Double minTemp;
     private Double maxTemp;
     private Boolean active;
-
     private LocalDate effectiveFrom;
     private LocalDate effectiveTo;
 
-    // ---------- Getters & Setters ----------
+    // getters & setters (REQUIRED BY TEST)
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getProductType() { return productType; }
+    public void setProductType(String productType) { this.productType = productType; }
 
-    public String getProductType() {
-        return productType;
-    }
+    public Double getMinTemp() { return minTemp; }
+    public void setMinTemp(Double minTemp) { this.minTemp = minTemp; }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
-    }
+    public Double getMaxTemp() { return maxTemp; }
+    public void setMaxTemp(Double maxTemp) { this.maxTemp = maxTemp; }
 
-    public Double getMinTemp() {
-        return minTemp;
-    }
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 
-    public void setMinTemp(Double minTemp) {
-        this.minTemp = minTemp;
-    }
+    public LocalDate getEffectiveFrom() { return effectiveFrom; }
+    public void setEffectiveFrom(LocalDate effectiveFrom) { this.effectiveFrom = effectiveFrom; }
 
-    public Double getMaxTemp() {
-        return maxTemp;
-    }
-
-    public void setMaxTemp(Double maxTemp) {
-        this.maxTemp = maxTemp;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public LocalDate getEffectiveFrom() {
-        return effectiveFrom;
-    }
-
-    public void setEffectiveFrom(LocalDate effectiveFrom) {
-        this.effectiveFrom = effectiveFrom;
-    }
-
-    public LocalDate getEffectiveTo() {
-        return effectiveTo;
-    }
-
-    public void setEffectiveTo(LocalDate effectiveTo) {
-        this.effectiveTo = effectiveTo;
-    }
+    public LocalDate getEffectiveTo() { return effectiveTo; }
+    public void setEffectiveTo(LocalDate effectiveTo) { this.effectiveTo = effectiveTo; }
 }
