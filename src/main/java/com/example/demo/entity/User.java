@@ -21,11 +21,11 @@ public class User {
     private String role;
     private LocalDateTime createdAt;
 
-    // ✅ Required by JPA
+   
     public User() {
     }
 
-    // ✅ Required by TestNG test (login test)
+  
     public User(Long id, String fullName, String email, String password, String role) {
         this.id = id;
         this.fullName = fullName;
@@ -34,7 +34,7 @@ public class User {
         this.role = role;
     }
 
-    // ✅ Lifecycle default values (Test 31)
+    
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
@@ -43,7 +43,7 @@ public class User {
         }
     }
 
-    // ---------------- GETTERS & SETTERS ----------------
+    
 
     public Long getId() {
         return id;
@@ -53,7 +53,7 @@ public class User {
         return fullName;
     }
 
-    // 🔴 THIS FIXES YOUR COMPILATION ERROR
+    
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }

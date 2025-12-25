@@ -8,20 +8,19 @@ public class JwtUtil {
     private final String secret;
     private final long expirationMs;
 
-    // REQUIRED constructor (used in test)
+   
     public JwtUtil(String secret, long expirationMs) {
         this.secret = secret;
         this.expirationMs = expirationMs;
     }
 
-    // Default constructor for Spring
+    
     public JwtUtil() {
         this.secret = "test-secret";
         this.expirationMs = 3600000;
     }
 
-    // TOKEN FORMAT (VERY IMPORTANT)
-    // userId|email|role
+    
     public String generateToken(Long userId, String email, String role) {
         return userId + "|" + email + "|" + role;
     }

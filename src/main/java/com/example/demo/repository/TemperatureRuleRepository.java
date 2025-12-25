@@ -13,7 +13,7 @@ public interface TemperatureRuleRepository
 
     List<TemperatureRule> findByActiveTrue();
 
-    // JPQL-style query required by test 59
+    
     @Query("SELECT r FROM TemperatureRule r WHERE r.productType = ?1")
     Optional<TemperatureRule> findApplicableRule(String productType, LocalDate date);
 }
