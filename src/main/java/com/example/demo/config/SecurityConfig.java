@@ -6,34 +6,49 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.List;
 
 @Configuration
 public class SecurityConfig {
 
-    // ✅ PasswordEncoder bean
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ AuthenticationManager bean
     @Bean
     public AuthenticationManager authenticationManager() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(passwordEncoder());
-        return new ProviderManager(List.of(provider));
+        // AuthenticationManager exists ONLY for constructor injection
+        // We are NOT using form-login
+        return new ProviderManager(List.of());
     }
 
-    // ✅ JwtUtil bean (THIS FIXES YOUR ERROR)
     @Bean
     public JwtUtil jwtUtil() {
         return new JwtUtil(
-                "12345678901234567890123456789012", // same secret as tests
-                3600000                              // 1 hour validity
+                "12345678901234567890123456789012",
+                3600000
         );
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll()
+            )
+            // 🔥 HARD DISABLE all login mechanisms
+            .formLogin(form -> form.disable())
+            .httpBasic(basic -> basic.disable())
+            .logout(logout -> logout.disable());
+
+        return http.build();
     }
 }
