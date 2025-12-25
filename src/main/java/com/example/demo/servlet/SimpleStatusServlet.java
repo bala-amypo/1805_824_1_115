@@ -3,16 +3,23 @@ package com.example.demo.servlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SimpleStatusServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(
+            HttpServletRequest req,
+            HttpServletResponse resp
+    ) throws ServletException, IOException {
+
         resp.setContentType("text/plain");
-        PrintWriter pw = resp.getWriter();
-        pw.write("Cold Chain Temperature Breach Alert System is running");
-        pw.flush();
+
+        PrintWriter writer = resp.getWriter();
+        writer.write("Cold Chain Temperature Breach Alert System is running");
+        writer.flush();
     }
 }
