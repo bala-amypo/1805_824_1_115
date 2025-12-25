@@ -12,19 +12,66 @@ public class BreachRecord {
 
     private Long shipmentId;
     private Long logId;
+    private String breachType;
     private Double breachValue;
     private String severity;
-    private Boolean resolved;
+    private String details;
     private LocalDateTime detectedAt;
+    private Boolean resolved;
 
     @PrePersist
     public void prePersist() {
-        detectedAt = LocalDateTime.now();
-        resolved = false;
+        this.detectedAt = LocalDateTime.now();
+        this.resolved = false;
     }
 
-    public Boolean getResolved() { return resolved; }
-    public void setResolved(Boolean resolved) { this.resolved = resolved; }
-    public Double getBreachValue() { return breachValue; }
-    public void setBreachValue(Double breachValue) { this.breachValue = breachValue; }
+    // ---------- Getters & Setters ----------
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getShipmentId() {
+        return shipmentId;
+    }
+
+    public void setShipmentId(Long shipmentId) {
+        this.shipmentId = shipmentId;
+    }
+
+    public Long getLogId() {
+        return logId;
+    }
+
+    public void setLogId(Long logId) {
+        this.logId = logId;
+    }
+
+    public Double getBreachValue() {
+        return breachValue;
+    }
+
+    public void setBreachValue(Double breachValue) {
+        this.breachValue = breachValue;
+    }
+
+    public String getSeverity() {
+        return severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    public Boolean getResolved() {
+        return resolved;
+    }
+
+    public void setResolved(Boolean resolved) {
+        this.resolved = resolved;
+    }
 }
