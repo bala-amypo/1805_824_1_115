@@ -11,31 +11,36 @@ import java.util.Optional;
 @Service
 public class ShipmentRecordServiceImpl implements ShipmentRecordService {
 
-    private final ShipmentRecordRepository repo;
+    private final ShipmentRecordRepository repository;
 
-    public ShipmentRecordServiceImpl(ShipmentRecordRepository repo) {
-        this.repo = repo;
+    public ShipmentRecordServiceImpl(ShipmentRecordRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public ShipmentRecord createShipment(ShipmentRecord shipment) {
-        return repo.save(shipment);
-    }
-
-    @Override
-    public ShipmentRecord updateShipmentStatus(Long id, String status) {
-        ShipmentRecord s = repo.findById(id).orElseThrow();
-        s.setStatus(status);
-        return repo.save(s);
-    }
-
-    @Override
-    public Optional<ShipmentRecord> getShipmentByCode(String code) {
-        return repo.findByShipmentCode(code);
+        return repository.save(shipment);
     }
 
     @Override
     public List<ShipmentRecord> getAllShipments() {
-        return repo.findAll();
+        return repository.findAll();
+    }
+
+    @Override
+    public ShipmentRecord updateShipmentStatus(Long id, String status) {
+        Optional<ShipmentRecord> shipmentOpt = repository.findById(id);
+        if (shipmentOpt.isPresent()) {
+            ShipmentRecord shipment = shipmentOpt.get();
+            shipment.setStatus(status);
+            return repository.save(shipment);
+        }
+        return null;
+    }
+
+    
+    @Override
+    public Optional<ShipmentRecord> getShipmentById(Long id) {
+        return repository.findById(id);
     }
 }
