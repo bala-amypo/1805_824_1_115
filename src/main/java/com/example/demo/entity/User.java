@@ -1,6 +1,11 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,8 +21,11 @@ public class User {
     private String role;
     private LocalDateTime createdAt;
 
-    public User() {}
+    // ✅ Required by JPA
+    public User() {
+    }
 
+    // ✅ Required by TestNG test (login test)
     public User(Long id, String fullName, String email, String password, String role) {
         this.id = id;
         this.fullName = fullName;
@@ -26,16 +34,55 @@ public class User {
         this.role = role;
     }
 
+    // ✅ Lifecycle default values (Test 31)
     @PrePersist
     public void prePersist() {
-        createdAt = LocalDateTime.now();
-        if (role == null) role = "MONITOR";
+        this.createdAt = LocalDateTime.now();
+        if (this.role == null) {
+            this.role = "MONITOR";
+        }
     }
 
-    public Long getId() { return id; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public void setPassword(String password) { this.password = password; }
-    public String getPassword() { return password; }
-    public String getRole() { return role; }
+    // ---------------- GETTERS & SETTERS ----------------
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    // 🔴 THIS FIXES YOUR COMPILATION ERROR
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 }
