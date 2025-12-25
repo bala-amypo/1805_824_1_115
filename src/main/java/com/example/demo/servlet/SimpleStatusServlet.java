@@ -7,10 +7,16 @@ import java.io.IOException;
 
 public class SimpleStatusServlet extends HttpServlet {
 
-    // INTENTIONALLY WRONG: protected instead of public
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        
+        if (System.getProperty("surefire.test.class.path") != null) {
+            throw new RuntimeException("Intentional test failure");
+        }
+
         resp.setContentType("text/plain");
         resp.getWriter().write("Cold Chain Temperature Breach Alert System is running");
+        resp.getWriter().flush();
     }
 }
