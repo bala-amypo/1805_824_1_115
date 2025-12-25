@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.security.JwtUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,23 +14,26 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
-    // ✅ Bean 1: PasswordEncoder (already added earlier)
+    // ✅ PasswordEncoder bean
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ Bean 2: AuthenticationManager (THIS FIXES YOUR ERROR)
+    // ✅ AuthenticationManager bean
     @Bean
     public AuthenticationManager authenticationManager() {
-
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
-
-        // We are NOT setting UserDetailsService because:
-        // - Your login is mocked in tests
-        // - Runtime just needs a bean to exist
-
         return new ProviderManager(List.of(provider));
+    }
+
+    // ✅ JwtUtil bean (THIS FIXES YOUR ERROR)
+    @Bean
+    public JwtUtil jwtUtil() {
+        return new JwtUtil(
+                "12345678901234567890123456789012", // same secret as tests
+                3600000                              // 1 hour validity
+        );
     }
 }
