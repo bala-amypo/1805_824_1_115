@@ -1,6 +1,10 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,10 +25,49 @@ public class TemperatureSensorLog {
         if (recordedAt == null) recordedAt = LocalDateTime.now();
     }
 
-    public Long getShipmentId() { return shipmentId; }
-    public void setShipmentId(Long shipmentId) { this.shipmentId = shipmentId; }
-    public Double getTemperatureValue() { return temperatureValue; }
-    public void setTemperatureValue(Double temperatureValue) { this.temperatureValue = temperatureValue; }
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
+    // ---------- Getters & Setters ----------
+
+    public Long getId() { 
+        return id; 
+    }
+
+    public void setId(Long id) { 
+        this.id = id; 
+    }
+
+    public Long getShipmentId() { 
+        return shipmentId; 
+    }
+
+    public void setShipmentId(Long shipmentId) { 
+        this.shipmentId = shipmentId; 
+    }
+
+    public String getSensorId() {
+        return sensorId;
+    }
+
+    public void setSensorId(String sensorId) {
+        this.sensorId = sensorId;
+    }
+
+    public LocalDateTime getRecordedAt() {
+        return recordedAt;
+    }
+
+    public Double getTemperatureValue() { 
+        return temperatureValue; 
+    }
+
+    public void setTemperatureValue(Double temperatureValue) { 
+        this.temperatureValue = temperatureValue; 
+    }
+
+    public String getLocation() { 
+        return location; 
+    }
+
+    public void setLocation(String location) { 
+        this.location = location; 
+    }
 }

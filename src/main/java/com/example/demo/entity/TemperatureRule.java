@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
@@ -16,8 +19,6 @@ public class TemperatureRule {
     private Boolean active;
     private LocalDate effectiveFrom;
     private LocalDate effectiveTo;
-
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
