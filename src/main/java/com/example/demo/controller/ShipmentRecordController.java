@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/shipments")
+@RequestMapping("/shipments")
 public class ShipmentRecordController {
 
     private final ShipmentRecordService shipmentRecordService;
 
+    // ✅ REQUIRED constructor
     public ShipmentRecordController(ShipmentRecordService shipmentRecordService) {
         this.shipmentRecordService = shipmentRecordService;
     }
@@ -20,18 +21,6 @@ public class ShipmentRecordController {
     @PostMapping
     public ShipmentRecord createShipment(@RequestBody ShipmentRecord shipment) {
         return shipmentRecordService.createShipment(shipment);
-    }
-
-    @PutMapping("/{id}/status")
-    public ShipmentRecord updateShipmentStatus(
-            @PathVariable Long id,
-            @RequestParam String status) {
-        return shipmentRecordService.updateShipmentStatus(id, status);
-    }
-
-    @GetMapping("/code/{shipmentCode}")
-    public ShipmentRecord getShipmentByCode(@PathVariable String shipmentCode) {
-        return shipmentRecordService.getShipmentByCode(shipmentCode);
     }
 
     @GetMapping("/{id}")

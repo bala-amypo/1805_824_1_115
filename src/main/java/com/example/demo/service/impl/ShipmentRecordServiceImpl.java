@@ -32,22 +32,20 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
         return shipmentRecordRepository.findAll();
     }
 
-    // EXACT name expected by tests
+    // ✅ REQUIRED BY TEST
     @Override
     public ShipmentRecord updateShipmentStatus(Long id, String status) {
         ShipmentRecord shipment = shipmentRecordRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("Shipment not found"));
+                .orElseThrow();
 
         shipment.setStatus(status);
         return shipmentRecordRepository.save(shipment);
     }
 
-    // EXACT name expected by tests
+    // ✅ REQUIRED BY TEST
     @Override
-    public ShipmentRecord getShipmentByCode(String shipmentCode) {
-        return shipmentRecordRepository
-                .findByShipmentCode(shipmentCode)
-                .orElseThrow(() -> new RuntimeException("Shipment not found"));
+    public Optional<ShipmentRecord> getShipmentByCode(String shipmentCode) {
+        return shipmentRecordRepository.findByShipmentCode(shipmentCode);
     }
 }
