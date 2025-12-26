@@ -12,8 +12,8 @@ public interface ShipmentRecordService {
 
     List<ShipmentRecord> getAllShipments();
 
-    // ✅ ADD THESE
-    ShipmentRecord updateStatus(Long id, String status);
+    // REQUIRED by test cases
+    ShipmentRecord updateShipmentStatus(Long id, String status);
 
-    ShipmentRecord getByShipmentCode(String shipmentCode);
+    ShipmentRecord getShipmentByCode(String shipmentCode);
 }

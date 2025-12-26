@@ -32,9 +32,9 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
         return shipmentRecordRepository.findAll();
     }
 
-    // ✅ FIXED: update status
+    // EXACT name expected by tests
     @Override
-    public ShipmentRecord updateStatus(Long id, String status) {
+    public ShipmentRecord updateShipmentStatus(Long id, String status) {
         ShipmentRecord shipment = shipmentRecordRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Shipment not found"));
@@ -43,9 +43,9 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
         return shipmentRecordRepository.save(shipment);
     }
 
-    // ✅ FIXED: find by shipment code
+    // EXACT name expected by tests
     @Override
-    public ShipmentRecord getByShipmentCode(String shipmentCode) {
+    public ShipmentRecord getShipmentByCode(String shipmentCode) {
         return shipmentRecordRepository
                 .findByShipmentCode(shipmentCode)
                 .orElseThrow(() -> new RuntimeException("Shipment not found"));
