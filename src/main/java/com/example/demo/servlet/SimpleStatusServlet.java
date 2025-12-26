@@ -20,3 +20,4 @@ public class SimpleStatusServlet extends HttpServlet {
         resp.getWriter().flush();
     }
 }
+
