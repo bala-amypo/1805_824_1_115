@@ -13,23 +13,23 @@ public class ShipmentRecordController {
 
     private final ShipmentRecordService shipmentRecordService;
 
-    // ✅ REQUIRED by test
+    // ✅ REQUIRED constructor
     public ShipmentRecordController(ShipmentRecordService shipmentRecordService) {
         this.shipmentRecordService = shipmentRecordService;
     }
 
     @PostMapping
-    public ShipmentRecord create(@RequestBody ShipmentRecord shipment) {
+    public ShipmentRecord createShipment(@RequestBody ShipmentRecord shipment) {
         return shipmentRecordService.createShipment(shipment);
     }
 
     @GetMapping("/{id}")
-    public Optional<ShipmentRecord> getById(@PathVariable Long id) {
+    public Optional<ShipmentRecord> getShipmentById(@PathVariable Long id) {
         return shipmentRecordService.getShipmentById(id);
     }
 
     @GetMapping
-    public List<ShipmentRecord> getAll() {
+    public List<ShipmentRecord> getAllShipments() {
         return shipmentRecordService.getAllShipments();
     }
 }
