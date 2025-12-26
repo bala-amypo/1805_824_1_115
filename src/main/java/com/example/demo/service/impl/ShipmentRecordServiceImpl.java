@@ -16,7 +16,7 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
     @Autowired
     private ShipmentRecordRepository repository;
 
-    // ✅ REQUIRED by tests
+    // REQUIRED by tests
     public ShipmentRecordServiceImpl() {}
 
     @Override
@@ -31,7 +31,9 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
 
     @Override
     public Optional<ShipmentRecord> getShipmentByCode(String shipmentCode) {
-        return repository.findByShipmentCode(shipmentCode);
+        return Optional.ofNullable(
+                repository.findByShipmentCode(shipmentCode)
+        );
     }
 
     @Override
