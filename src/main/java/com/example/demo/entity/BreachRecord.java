@@ -1,6 +1,10 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,8 +25,8 @@ public class BreachRecord {
 
     @PrePersist
     public void prePersist() {
-        this.detectedAt = LocalDateTime.now();
-        this.resolved = false;
+        if (detectedAt == null) detectedAt = LocalDateTime.now();
+        if (resolved == null) resolved = false;
     }
 
     // ---------- Getters & Setters ----------
@@ -51,6 +55,14 @@ public class BreachRecord {
         this.logId = logId;
     }
 
+    public String getBreachType() {
+        return breachType;
+    }
+
+    public void setBreachType(String breachType) {
+        this.breachType = breachType;
+    }
+
     public Double getBreachValue() {
         return breachValue;
     }
@@ -65,6 +77,18 @@ public class BreachRecord {
 
     public void setSeverity(String severity) {
         this.severity = severity;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public LocalDateTime getDetectedAt() {
+        return detectedAt;
     }
 
     public Boolean getResolved() {
