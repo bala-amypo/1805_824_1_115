@@ -11,4 +11,10 @@ public interface ShipmentRecordService {
     Optional<ShipmentRecord> getShipmentById(Long id);
 
     List<ShipmentRecord> getAllShipments();
+
+    // ✅ REQUIRED BY TEST
+    ShipmentRecord updateShipmentStatus(Long id, String status);
+
+    // ✅ REQUIRED BY TEST
+    Optional<ShipmentRecord> getShipmentByCode(String shipmentCode);
 }

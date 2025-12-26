@@ -13,7 +13,6 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
 
     private final ShipmentRecordRepository shipmentRecordRepository;
 
-    // ✅ REQUIRED constructor (hidden tests expect this)
     public ShipmentRecordServiceImpl(ShipmentRecordRepository shipmentRecordRepository) {
         this.shipmentRecordRepository = shipmentRecordRepository;
     }
@@ -31,5 +30,22 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
     @Override
     public List<ShipmentRecord> getAllShipments() {
         return shipmentRecordRepository.findAll();
+    }
+
+    // ✅ REQUIRED BY TEST
+    @Override
+    public ShipmentRecord updateShipmentStatus(Long id, String status) {
+        ShipmentRecord shipment = shipmentRecordRepository
+                .findById(id)
+                .orElseThrow();
+
+        shipment.setStatus(status);
+        return shipmentRecordRepository.save(shipment);
+    }
+
+    // ✅ REQUIRED BY TEST
+    @Override
+    public Optional<ShipmentRecord> getShipmentByCode(String shipmentCode) {
+        return shipmentRecordRepository.findByShipmentCode(shipmentCode);
     }
 }
