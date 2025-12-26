@@ -16,26 +16,22 @@ public class ShipmentRecordController {
     @Autowired
     private ShipmentRecordService shipmentService;
 
-    // ✅ REQUIRED by tests
-    public ShipmentRecordController() {}
+    // REQUIRED by test cases
+    public ShipmentRecordController() {
+    }
 
     @GetMapping
-    public List<ShipmentRecord> getAllShipments() {
+    public List<ShipmentRecord> getAll() {
         return shipmentService.getAllShipments();
     }
 
     @GetMapping("/{id}")
-    public Optional<ShipmentRecord> getShipmentById(@PathVariable Long id) {
+    public Optional<ShipmentRecord> getById(@PathVariable Long id) {
         return shipmentService.getShipmentById(id);
     }
 
-    @GetMapping("/code/{code}")
-    public Optional<ShipmentRecord> getShipmentByCode(@PathVariable String code) {
-        return shipmentService.getShipmentByCode(code);
-    }
-
     @PostMapping
-    public ShipmentRecord createShipment(@RequestBody ShipmentRecord shipment) {
+    public ShipmentRecord create(@RequestBody ShipmentRecord shipment) {
         return shipmentService.createShipment(shipment);
     }
 
