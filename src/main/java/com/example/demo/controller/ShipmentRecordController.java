@@ -2,9 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.ShipmentRecord;
 import com.example.demo.service.ShipmentRecordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,55 +12,39 @@ import java.util.Optional;
 @RequestMapping("/api/shipments")
 public class ShipmentRecordController {
 
-    private final ShipmentRecordService shipmentService;
+    @Autowired
+    private ShipmentRecordService shipmentService;
 
-    public ShipmentRecordController(ShipmentRecordService shipmentService) {
-        this.shipmentService = shipmentService;
-    }
-
-    // ✅ GET ALL SHIPMENTS
+    // GET all shipments
     @GetMapping
     public List<ShipmentRecord> getAllShipments() {
-        try {
-            return shipmentService.getAllShipments();
-        } catch (Exception e) {
-            return Collections.emptyList(); // portal-safe
-        }
+        return shipmentService.getAllShipments();
     }
 
-    // ✅ GET SHIPMENT BY ID
+    // GET shipment by ID
     @GetMapping("/{id}")
-    public ShipmentRecord getShipmentById(@PathVariable Long id) {
-        try {
-            Optional<ShipmentRecord> shipment = shipmentService.getShipmentById(id);
-            return shipment.orElse(null);
-        } catch (Exception e) {
-            return null;
-        }
+    public Optional<ShipmentRecord> getShipmentById(@PathVariable Long id) {
+        return shipmentService.getShipmentById(id);
     }
 
-    // ✅ CREATE SHIPMENT
+    // GET shipment by shipment code
+    @GetMapping("/code/{shipmentCode}")
+    public ShipmentRecord getShipmentByCode(@PathVariable String shipmentCode) {
+        return shipmentService.getShipmentByCode(shipmentCode);
+    }
+
+    // CREATE shipment
     @PostMapping
     public ShipmentRecord createShipment(@RequestBody ShipmentRecord shipment) {
-        try {
-            return shipmentService.createShipment(shipment);
-        } catch (Exception e) {
-            return shipment;
-        }
+        return shipmentService.createShipment(shipment);
     }
 
-    // ✅ UPDATE SHIPMENT STATUS (PUT)
+    // UPDATE shipment status
     @PutMapping("/{id}/status")
     public ShipmentRecord updateShipmentStatus(
             @PathVariable Long id,
             @RequestParam String status) {
-        try {
-            return shipmentService.updateShipmentStatus(id, status);
-        } catch (Exception e) {
-            ShipmentRecord fallback = new ShipmentRecord();
-            fallback.setId(id);
-            fallback.setStatus(status);
-            return fallback;
-        }
+
+        return shipmentService.updateShipmentStatus(id, status);
     }
 }
