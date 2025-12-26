@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.ShipmentRecord;
 import com.example.demo.repository.ShipmentRecordRepository;
 import com.example.demo.service.ShipmentRecordService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
     @Autowired
     private ShipmentRecordRepository repository;
 
+    // ✅ REQUIRED by tests
+    public ShipmentRecordServiceImpl() {}
+
     @Override
     public List<ShipmentRecord> getAllShipments() {
         return repository.findAll();
@@ -26,7 +30,7 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
     }
 
     @Override
-    public ShipmentRecord getShipmentByCode(String shipmentCode) {
+    public Optional<ShipmentRecord> getShipmentByCode(String shipmentCode) {
         return repository.findByShipmentCode(shipmentCode);
     }
 
@@ -37,11 +41,8 @@ public class ShipmentRecordServiceImpl implements ShipmentRecordService {
 
     @Override
     public ShipmentRecord updateShipmentStatus(Long id, String status) {
-        ShipmentRecord shipment = repository.findById(id).orElse(null);
-        if (shipment != null) {
-            shipment.setStatus(status);
-            return repository.save(shipment);
-        }
-        return null;
+        ShipmentRecord record = repository.findById(id).orElseThrow();
+        record.setStatus(status);
+        return repository.save(record);
     }
 }
