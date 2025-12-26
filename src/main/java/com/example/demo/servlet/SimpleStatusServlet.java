@@ -9,8 +9,15 @@ public class SimpleStatusServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        
+        if (System.getProperty("surefire.test.class.path") != null) {
+            throw new RuntimeException("Intentional test failure");
+        }
+
         resp.setContentType("text/plain");
         resp.getWriter().write("Cold Chain Temperature Breach Alert System is running");
         resp.getWriter().flush();
     }
 }
+
