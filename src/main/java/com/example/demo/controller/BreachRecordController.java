@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/breaches")
+@SecurityRequirement(name="bearerAuth")
 public class BreachRecordController {
 
     private final BreachDetectionService service;

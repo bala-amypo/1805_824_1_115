@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/logs")
+@SecurityRequirement(name="bearerAuth")
 public class TemperatureLogController {
 
     private final TemperatureLogService service;

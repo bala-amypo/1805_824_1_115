@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/shipments")
+@SecurityRequirement(name="bearerAuth")
 public class ShipmentRecordController {
 
     private final ShipmentRecordService shipmentRecordService;

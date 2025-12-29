@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/rules")
+@SecurityRequirement(name="bearerAuth")
 public class TemperatureRuleController {
 
     private final TemperatureRuleService service;

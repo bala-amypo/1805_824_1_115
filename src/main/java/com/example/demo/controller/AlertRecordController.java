@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/alerts")
+@SecurityRequirement(name="bearerAuth")
 public class AlertRecordController {
 
     private final AlertService service;
