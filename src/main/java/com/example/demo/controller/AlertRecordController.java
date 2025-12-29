@@ -4,7 +4,7 @@ import com.example.demo.entity.AlertRecord;
 import com.example.demo.service.AlertService;
 
 import org.springframework.web.bind.annotation.*;
-
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
 
 @RestController

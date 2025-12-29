@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BreachRecord;
 import com.example.demo.service.BreachDetectionService;
-
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
