@@ -27,7 +27,7 @@ import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
+import io.swagger.v3.oas.models.servers.Server;
 @Configuration
 public class SwaggerConfig {
 
@@ -46,4 +46,12 @@ public class SwaggerConfig {
                 new SecurityRequirement().addList("bearerAuth")
             );
     }
+    @Bean
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                // You need to change the port as per your server
+                .servers(List.of(
+                        new Server().url("https://9008.32procr.amypo.ai/")
+                ));
+        }
 }
