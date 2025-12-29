@@ -1,21 +1,87 @@
-package com.example.demo.config;
+// package com.example.demo.config;
 
-import com.example.demo.security.CustomUserDetailsService;
-import com.example.demo.security.JwtUtil;
+// import com.example.demo.security.CustomUserDetailsService;
+// import com.example.demo.security.JwtUtil;
+// import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+// import org.springframework.security.authentication.AuthenticationManager;
+// import org.springframework.security.authentication.ProviderManager;
+// import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+// import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.password.PasswordEncoder;
+// import org.springframework.security.web.SecurityFilterChain;
+
+// import java.util.List;
+
+// @Configuration
+// public class SecurityConfig {
+
+//     @Bean
+//     public PasswordEncoder passwordEncoder() {
+//         return new BCryptPasswordEncoder();
+//     }
+
+//     @Bean
+//     public AuthenticationManager authenticationManager(
+//             CustomUserDetailsService userDetailsService
+//     ) {
+//         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//         provider.setUserDetailsService(userDetailsService);
+//         provider.setPasswordEncoder(passwordEncoder());
+//         return new ProviderManager(List.of(provider));
+//     }
+
+//     @Bean
+//     public JwtUtil jwtUtil() {
+//         return new JwtUtil(
+//                 "12345678901234567890123456789012",
+//                 3600000
+//         );
+//     }
+
+//     @Bean
+//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+//         http
+//             .csrf(csrf -> csrf.disable())
+//             .authorizeHttpRequests(auth -> auth
+//                 .anyRequest().permitAll()
+//             )
+//             .formLogin(form -> form.disable())
+//             .httpBasic(basic -> basic.disable())
+//             .logout(logout -> logout.disable());
+
+//         return http.build();
+//     }
+// }
+package com.example.demo.security;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
-import java.util.List;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
+
+    
+    @Bean
+    public JwtUtil jwtUtil(
+            @Value("${jwt.secret}") String secret,
+            @Value("${jwt.expiration}") long expiration
+    ) {
+        return new JwtUtil(secret, expiration);
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -23,35 +89,38 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(
-            CustomUserDetailsService userDetailsService
-    ) {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return new ProviderManager(List.of(provider));
+    public JwtAuthenticationFilter jwtAuthenticationFilter(JwtUtil jwtUtil) {
+        return new JwtAuthenticationFilter(jwtUtil);
     }
 
     @Bean
-    public JwtUtil jwtUtil() {
-        return new JwtUtil(
-                "12345678901234567890123456789012",
-                3600000
-        );
-    }
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            JwtAuthenticationFilter jwtFilter
+    ) throws Exception {
 
         http
             .csrf(csrf -> csrf.disable())
+            .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .anyRequest().permitAll()
+                    .requestMatchers(
+                            "/auth/login",        
+                            "/auth/register",     
+                            "/auth/**",           
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/hello-servlet"
+                    ).permitAll()
+                    .anyRequest().authenticated()
             )
-            .formLogin(form -> form.disable())
-            .httpBasic(basic -> basic.disable())
-            .logout(logout -> logout.disable());
-
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
+    }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration)
+            throws Exception {
+        return configuration.getAuthenticationManager();
     }
 }
